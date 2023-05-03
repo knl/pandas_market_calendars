@@ -150,7 +150,10 @@ def test_protected_dict():
 
     dct = ProtectedDict(dict(a=1, b=2))
 
-    s = "ProtectedDict(\n" + pformat(dict(dct), sort_dicts= False) + "\n)"
+    try:
+        s = "ProtectedDict(\n" + pformat(dict(dct), sort_dicts= False) + "\n)"
+    except TypeError:
+        s = "ProtectedDict(\n" + pformat(dict(dct)) + "\n)"
     assert str(dct) == s
 
 
